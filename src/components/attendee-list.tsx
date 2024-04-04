@@ -1,4 +1,5 @@
 import { Search, MoreHorizontal, ChevronLeft, ChevronsLeft, ChevronRight, ChevronsRight } from 'lucide-react'
+import { IconButton } from './icon-button'
 
 export function Attendee() {
     return (
@@ -42,9 +43,9 @@ export function Attendee() {
                                     <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>7 dias atrás</td>
                                     <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>3 dias atrás</td>
                                     <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>
-                                        <button className='bg-black/20 border border-white/10 rounded p-1.5'>
+                                        <IconButton transparent={true}>
                                             <MoreHorizontal className='size-4 ' />
-                                        </button>
+                                        </IconButton>
                                     </td>
                                 </tr>    
                             )
@@ -60,18 +61,18 @@ export function Attendee() {
                                     <span>Pagina 1 de 23</span>
 
                                     <div className='flex gap-1.5 '>
-                                        <button className='bg-white/10 border border-white/10 rounded p-1.5'>
+                                        <IconButton>
                                             <ChevronsLeft className='size-4' />
-                                        </button>
-                                        <button className='bg-white/10 border border-white/10 rounded p-1.5'>
+                                        </IconButton>
+                                        <IconButton>
                                             <ChevronLeft className='size-4' />
-                                        </button>
-                                        <button className='bg-white/10 border border-white/10 rounded p-1.5'>
+                                        </IconButton>
+                                        <IconButton>
                                             <ChevronRight className='size-4' />
-                                        </button>
-                                        <button className='bg-white/10 border border-white/10 rounded p-1.5'>
+                                        </IconButton>                                                             
+                                        <IconButton>
                                             <ChevronsRight className='size-4' />
-                                        </button>
+                                        </IconButton>
                                     </div>
                                 </div>
                             </td>

@@ -1,5 +1,8 @@
 import { Search, MoreHorizontal, ChevronLeft, ChevronsLeft, ChevronRight, ChevronsRight } from 'lucide-react'
 import { IconButton } from './icon-button'
+import { Table } from './table/table'
+import { TableHeader } from './table/table-header'
+import { TableCell } from './table/table-cell'
 
 export function Attendee() {
     return (
@@ -11,45 +14,43 @@ export function Attendee() {
                     <input className="bg-transparent flex-1 outline-none border-0 p-0 text-sm" placeholder="Buscar Participante..." />
                 </div>
             </div>
-
-            <div className='w-full border border-white/10 rounded-lg'>
-                <table className='w-full'>
+                <Table>
                     <thead>
                         <tr className='border-b border-white/10'>
-                            <th style={{ width: 48 }} className='py-3 px-4 text-sm font-semibold text-left'>
+                            <TableHeader style={{ width: 48 }}>
                                 <input type='checkbox' className='size-4 bg-black/20 rounded border border-white/10 checked:bg-orange-400' />
-                            </th>
-                            <th className='py-3 px-4 text-sm font-semibold text-left'>Código</th>
-                            <th className='py-3 px-4 text-sm font-semibold text-left'>Participantes</th>
-                            <th className='py-3 px-4 text-sm font-semibold text-left'>Data da inscrição</th>
-                            <th className='py-3 px-4 text-sm font-semibold text-left'>Data do check-in</th>
-                            <th style={{ width: 64 }} className='py-3 px-4 text-sm font-semibold text-left'></th>
+                            </TableHeader>
+                            <TableHeader>Código</TableHeader>
+                            <TableHeader>Participantes</TableHeader>
+                            <TableHeader>Data da inscrição</TableHeader>
+                            <TableHeader>Data do check-in</TableHeader>
+                            <TableHeader style={{ width: 64 }}></TableHeader>
                         </tr>
                     </thead>
                     <tbody>
                         {Array.from({ length: 10 }).map((_, i) => {
                             return (
                                 <tr key={i} className='border-b border-white/10 hover:bg-white/5'>
-                                    <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>
+                                    <TableCell>
                                         <input type='checkbox' className='size-4 bg-black/20 rounded border border-white/10 checked:bg-orange-400' />
-                                    </td>
-                                    <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>12357</td>
-                                    <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>
+                                    </TableCell>
+                                    <TableCell>12357</TableCell>
+                                    <TableCell>
                                         <div className='flex flex-col gap-1'>
                                             <span className='font-semibold text-white'>Diego Schell Fernandes</span>
                                             <span>diego.schell.f@gmail.com</span>
                                         </div>
-                                    </td>
-                                    <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>7 dias atrás</td>
-                                    <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>3 dias atrás</td>
-                                    <td className='py-3 px-4 text-sm font-semibold text-zinc-300'>
+                                    </TableCell>
+                                    <TableCell>7 dias atrás</TableCell>
+                                    <TableCell>3 dias atrás</TableCell>
+                                    <TableCell>
                                         <IconButton transparent={true}>
                                             <MoreHorizontal className='size-4 ' />
                                         </IconButton>
-                                    </td>
+                                    </TableCell>
                                 </tr>    
                             )
-                        })}
+                        })} 
                     </tbody>
                     <tfoot>
                         <tr>
@@ -67,7 +68,7 @@ export function Attendee() {
                                         <IconButton>
                                             <ChevronLeft className='size-4' />
                                         </IconButton>
-                                        <IconButton>
+                                        <IconButton> 
                                             <ChevronRight className='size-4' />
                                         </IconButton>                                                             
                                         <IconButton>
@@ -78,8 +79,7 @@ export function Attendee() {
                             </td>
                         </tr>
                     </tfoot>
-                </table>
-            </div>
+                </Table>
         </div>
     )
 }

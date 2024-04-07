@@ -18,9 +18,22 @@ export function Attendee() {
 
         const totalPages = Math.ceil(attendees.length / 10)
 
+        const filteredAttendees = attendees.filter((attendee) => {
+            const searchTermLower = search.toLowerCase();
+            return (
+              attendee.name.toLowerCase().includes(searchTermLower) ||
+              attendee.email.toLowerCase().includes(searchTermLower)
+            );
+          });
+        
+          const paginatedAttendees = filteredAttendees.slice(
+            (page - 1) * 10,
+            page * 10
+          );        
 
         function onSearchInputChanged(event: ChangeEvent<HTMLInputElement>) {
             setSearch(event.target.value)
+            setPage(1)
         }
 
         function goToFirstPage() {
@@ -42,9 +55,11 @@ export function Attendee() {
                 <h1 className="text-2xl font-bold">Participantes</h1>
                 <div className="px-3 w-72 py-1.5 border border-white/10 bg-transparent rounded-lg flex items-center gap-3">
                     <Search className='size-4 text-emerald-300' />
-                    <input onChange={onSearchInputChanged} className="bg-transparent flex-1 outline-none border-0 p-0 text-sm" placeholder="Buscar Participante..." />
+                    <input onChange={onSearchInputChanged} 
+                        className="bg-transparent flex-1 outline-none border-0 p-0 text-sm focus:ring-0" 
+                        placeholder="Buscar Participante..." 
+                    />
                 </div>
-                {search}
             </div>
                 <Table>
                     <thead>
@@ -60,7 +75,7 @@ export function Attendee() {
                         </tr>
                     </thead>
                     <tbody>
-                        {attendees.slice((page - 1) * 10, page * 10).map((Attendee) => {
+                        {paginatedAttendees.map((Attendee) => {
                             return (
                                 <tr key={Attendee.id} className='border-b border-white/10 hover:bg-white/5'>
                                     <TableCell>
